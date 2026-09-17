@@ -55,6 +55,10 @@ bash scripts/install_codex_bundle.sh
 
 เรียก `$using-dify-dsl` ตามด้วยโจทย์ ดู [คู่มือติดตั้ง Codex ภาษาไทย](.codex/INSTALL.th.md)
 
+## ตัวอย่างทีม Agent ภาษาไทย
+
+[Research → Writing → Review](docs/research-writing-review-example.th.md) เป็น Workflow ที่มี Classic Agent 3 ตัว พร้อมไฟล์ YAML และขั้นตอนตั้งค่าโมเดลกับ DuckDuckGo ต้องติดตั้งปลั๊กอินและทดสอบบน Dify ปลายทางก่อนใช้งานจริง
+
 ## เวอร์ชันไฟล์ที่สร้าง
 
 - App DSL สำหรับ Workflow และ Chatflow ใช้ `version: '0.7.0'`

@@ -10,6 +10,8 @@
 - [นโยบายเวอร์ชัน DSL และหลักฐานต้นทาง](../skills/dify-dsl-foundations/references/dsl-version-policy.th.md)
 - [ตัวอย่าง Workflow ภาษาไทยแบบไม่ใช้โมเดล](../examples/echo-workflow-0.7.0.yml)
 
+- [ตัวอย่างทีม Research → Writing → Review พร้อม YAML](research-writing-review-example.th.md)
+
 ## เลือกเส้นทางตามโจทย์
 
 <!-- BEGIN ROUTE_MATRIX -->
