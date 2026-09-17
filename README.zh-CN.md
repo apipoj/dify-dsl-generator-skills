@@ -1,8 +1,7 @@
-[ภาษาไทย](README.th.md) · [English](README.md)
+[ภาษาไทย](README.md) · [English](README.en.md)
 
 # Dify DSL 技能包
 
-[English](README.md)
 
 这是一个面向 `Dify DSL` 的技能仓库。
 

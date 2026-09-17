@@ -28,7 +28,7 @@ class FileSpec:
 
 FILE_SPECS = (
     FileSpec("README.zh-CN.md", "zh", "plain", True),
-    FileSpec("README.md", "en", "plain", True),
+    FileSpec("README.en.md", "en", "plain", True),
     FileSpec("docs/dify-dsl-subagent-review-overview.zh-CN.md", "zh", "plain", True),
     FileSpec("docs/dify-dsl-subagent-review-overview.md", "en", "plain", True),
     FileSpec("skills/dify-dsl-foundations/references/task-routing.md", "zh", "linked", False),

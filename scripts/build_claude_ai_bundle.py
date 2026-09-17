@@ -39,7 +39,7 @@ def package_files() -> dict[str, bytes]:
             if not path.is_file() or '__pycache__' in path.parts or path.suffix == '.pyc' or path.name == '.DS_Store':
                 continue
             files[path.relative_to(ROOT).as_posix()] = path.read_bytes()
-    for name in ('LICENSE', 'README.md', 'README.zh-CN.md', 'README.th.md'):
+    for name in ('LICENSE', 'README.md', 'README.en.md', 'README.zh-CN.md', 'README.th.md'):
         files[name] = (ROOT / name).read_bytes()
     # These files are referenced by the README; preserve them in the package.
     for name in ('.codex/INSTALL.md', '.codex/INSTALL.th.md', '.claude/INSTALL.th.md', '.github/workflows/validate.yml'):
