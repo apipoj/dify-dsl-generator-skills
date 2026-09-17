@@ -1,22 +1,22 @@
 ---
 name: dify-dsl-quality
-description: Dify DSL 质量技能。用于问题发现、问题分级、修复策略、优化策略、子代理复核分工和审查报告组织；当任务进入审查、修复或优化阶段时使用。
+description: ตรวจคุณภาพ Dify DSL เพื่อค้นหาและจัดระดับปัญหา เลือกวิธีแก้ไขหรือปรับปรุง แบ่งบทบาทผู้ตรวจอิสระ และจัดรายงาน ใช้ในขั้นตรวจ แก้ไข หรือปรับประสิทธิภาพ
 ---
 
 # dify-dsl-quality
 
-负责“怎么发现问题、怎么修、怎么审、怎么做独立复核”，不负责模式判断和最终发布门禁。
+กำหนดวิธีค้นหาปัญหา แก้ไข ตรวจทาน และตรวจอิสระ ไม่แทนการเลือกโหมดหรือข้อสรุปความพร้อมเผยแพร่
 
-## 入口
+## เริ่มอ่าน
 
-先读 [references/index.md](references/index.md)。需要角色分工时，再读 [agents/index.md](agents/index.md)。
+อ่าน [ดัชนีอ้างอิง](references/index.md) เมื่อต้องแบ่งบทบาท จึงอ่าน [บทบาทผู้ตรวจ](agents/index.md)
 
-如果当前任务已经明确要正式编排子代理复核，而不是只看复核口径，转去 [../dify-dsl-subagent-review/SKILL.md](../dify-dsl-subagent-review/SKILL.md)。
+ถ้าต้องจัดการการตรวจด้วย subagent จริง ให้ใช้ [dify-dsl-subagent-review](../dify-dsl-subagent-review/SKILL.md)
 
-如果需要 deterministic 硬校验，优先运行 `scripts/lint_dsl.py`，先把 selector、edge、模式终点、容器起点和关键节点字段的明显错误筛出来，再进入更细的审查或修复策略。
+เมื่อต้องตรวจด้วยกฎแน่นอน ให้เรียก `scripts/lint_dsl.py` จากโฟลเดอร์ skill นี้ หรือใช้พาธเต็ม ตรวจข้อผิดพลาดของ selector, edge, โหนดปลายทางตามโหมด จุดเริ่ม container และฟิลด์สำคัญก่อนตรวจรายละเอียดต่อ
 
-## 路由边界
+## ขอบเขต
 
-- 如果还没完成模式判断和基础字段口径收敛，先回 [../dify-dsl-foundations/SKILL.md](../dify-dsl-foundations/SKILL.md)
-- 如果问题已经变成发布结论、覆盖率或观测字段，转去 [../dify-dsl-governance/SKILL.md](../dify-dsl-governance/SKILL.md)
-- 如果需要真实样本前向验证，转去 [../dify-dsl-forward-testing/SKILL.md](../dify-dsl-forward-testing/SKILL.md)
+- โหมดและรูปแบบฟิลด์ยังไม่ชัด → [dify-dsl-foundations](../dify-dsl-foundations/SKILL.md)
+- ความพร้อมเผยแพร่ ความครอบคลุม หรือฟิลด์สำหรับติดตามระบบ → [dify-dsl-governance](../dify-dsl-governance/SKILL.md)
+- การประเมิน skill ด้วยตัวอย่างจริง → [dify-dsl-forward-testing](../dify-dsl-forward-testing/SKILL.md)

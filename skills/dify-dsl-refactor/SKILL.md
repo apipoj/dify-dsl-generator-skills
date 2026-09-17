@@ -1,31 +1,24 @@
 ---
 name: dify-dsl-refactor
-description: 修复、优化与重构现有 Dify Workflow、Chatflow、RAG Pipeline DSL 的入口技能。用于最小修复、结构优化、模板重排和能力块重构；如果用户只要只读结论，转去 dify-dsl-review；如果目标仍模糊，先回 dify-dsl-brainstorming。
+description: แก้ไข ปรับประสิทธิภาพ และปรับโครงสร้าง Dify DSL เดิม ตั้งแต่แก้ขั้นต่ำจนถึงจัดเทมเพลตหรือส่วนความสามารถใหม่ หากต้องการเพียงผลตรวจให้อ่านอย่างเดียวด้วย review หากเป้าหมายยังไม่ชัดให้ใช้ brainstorming
 ---
 
 # dify-dsl-refactor
 
-先诊断问题，再决定做最小修复、结构优化还是模板重排，不要一上来重写整份 DSL。
+วิเคราะห์สาเหตุก่อนเลือกการแก้ขั้นต่ำ ปรับโครงสร้าง หรือจัดเทมเพลตใหม่ อย่าเริ่มด้วยการเขียน DSL ใหม่ทั้งหมด
 
-## 协作顺序
+## ลำดับการทำงาน
 
-1. 先读 [../dify-dsl-foundations/SKILL.md](../dify-dsl-foundations/SKILL.md) 和 [../dify-dsl-quality/SKILL.md](../dify-dsl-quality/SKILL.md)，确定问题类别和修复路径。
-2. 节点或容器细节需要补证时，读 [../dify-dsl-nodes/SKILL.md](../dify-dsl-nodes/SKILL.md)。
-3. 需要模板重排或骨架替换时，读 [../dify-dsl-templates/SKILL.md](../dify-dsl-templates/SKILL.md)。
-4. 需要变更影响、观测字段或上线前检查时，读 [../dify-dsl-governance/SKILL.md](../dify-dsl-governance/SKILL.md)。
-5. 如果修改后需要正式组织多方独立复核，转去 [../dify-dsl-subagent-review/SKILL.md](../dify-dsl-subagent-review/SKILL.md)。
+1. อ่าน [dify-dsl-foundations](../dify-dsl-foundations/SKILL.md) และ [dify-dsl-quality](../dify-dsl-quality/SKILL.md) เพื่อแยกประเภทปัญหาและเลือกวิธีแก้
+2. เมื่อต้องหาหลักฐานเรื่องโหนดหรือ container อ่าน [dify-dsl-nodes](../dify-dsl-nodes/SKILL.md)
+3. เมื่อต้องจัดเทมเพลตใหม่หรือเปลี่ยนโครงร่าง อ่าน [dify-dsl-templates](../dify-dsl-templates/SKILL.md)
+4. เมื่อต้องวิเคราะห์ผลกระทบ การติดตามระบบ หรือความพร้อมเผยแพร่ อ่าน [dify-dsl-governance](../dify-dsl-governance/SKILL.md)
+5. เมื่อต้องตรวจอิสระหลังแก้ไข ใช้ [dify-dsl-subagent-review](../dify-dsl-subagent-review/SKILL.md)
 
-## 最低输出
+## ผลลัพธ์ขั้นต่ำ
 
-1. 问题归因
-2. 最小修复或重构方案
-3. 变更影响摘要
-4. 修改后的 DSL
-5. 仍待确认风险
-6. 如果当前修改已经进入高风险或高复杂度场景，说明是否建议下一步进入 [../dify-dsl-subagent-review/SKILL.md](../dify-dsl-subagent-review/SKILL.md)
+ระบุสาเหตุ แผนแก้ขั้นต่ำหรือปรับโครงสร้าง ผลกระทบโดยสรุป DSL หลังแก้ และความเสี่ยงที่ยังต้องยืนยัน หากงานซับซ้อนหรือเสี่ยงสูง ให้ระบุว่าควรตรวจต่อด้วย subagent-review หรือไม่
 
-## 约束
+## ข้อกำหนด
 
-- 不要把“最小修复”无故升级成大重写。
-- 不要在目标不明确时擅自决定重构方向。
-- 如果用户只要只读审查，转去 [../dify-dsl-review/SKILL.md](../dify-dsl-review/SKILL.md)。
+อย่าขยายการแก้ขั้นต่ำเป็นการเขียนใหม่โดยไม่มีเหตุผล อย่าเลือกทิศทางปรับโครงสร้างเองเมื่อเป้าหมายไม่ชัด ถ้าขอเพียงตรวจแบบอ่านอย่างเดียว ให้ใช้ [dify-dsl-review](../dify-dsl-review/SKILL.md)

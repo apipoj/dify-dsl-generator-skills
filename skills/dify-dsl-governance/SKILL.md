@@ -1,19 +1,18 @@
 ---
 name: dify-dsl-governance
-description: Dify DSL 交付判断技能。用于发布结论、变更影响、覆盖率、升级条件、观测字段和能力块约定；当任务已经不只是“能不能跑”，而是要回答“能不能交付”时使用。
+description: ประเมินความพร้อมส่งมอบ Dify DSL จากผลกระทบของการเปลี่ยนแปลง ความครอบคลุม เกณฑ์ยกระดับ การติดตามระบบ และข้อตกลงของส่วนความสามารถ ใช้เมื่อต้องตอบว่าพร้อมส่งมอบหรือไม่
 ---
 
 # dify-dsl-governance
 
-只负责交付判断，不替代质量检查。
+ประเมินการส่งมอบโดยอาศัยผลตรวจคุณภาพ ไม่ใช้แทนการตรวจคุณภาพ
 
-## 入口
+## เริ่มอ่าน
 
-先读 [references/index.md](references/index.md)，按需进入 `evaluation-gates / change-impact-review / coverage-matrix / observability-contract / capability-contracts`。
+อ่าน [ดัชนีอ้างอิง](references/index.md) แล้วเลือก `evaluation-gates / change-impact-review / coverage-matrix / observability-contract / capability-contracts` ตามงาน
 
-如果当前还没有多方复核结果，但用户明确要求由子代理复核后再统一发布结论，先转去 [../dify-dsl-subagent-review/SKILL.md](../dify-dsl-subagent-review/SKILL.md)。
+ถ้ายังไม่มีผลตรวจหลายฝ่ายและผู้ใช้ขอให้ subagent ตรวจแล้วรวมข้อสรุปก่อนเผยแพร่ ให้ใช้ [dify-dsl-subagent-review](../dify-dsl-subagent-review/SKILL.md) ก่อน
 
-## 约束
+## ข้อกำหนด
 
-- 如果还没有结构检查、字段检查和风险分级，不要单独拿这里下结论。
-- 如果问题还是“字段对不对、链路闭不闭、提示词合不合理”，先回 [../dify-dsl-quality/SKILL.md](../dify-dsl-quality/SKILL.md)。
+อย่าสรุปความพร้อมโดยไม่มีผลตรวจโครงสร้าง ฟิลด์ และระดับความเสี่ยง หากยังสงสัยเรื่องฟิลด์ เส้นทางการทำงานครบหรือไม่ หรือ prompt เหมาะสมหรือไม่ ให้กลับไป [dify-dsl-quality](../dify-dsl-quality/SKILL.md)

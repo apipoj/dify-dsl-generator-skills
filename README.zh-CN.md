@@ -1,3 +1,5 @@
+[ภาษาไทย](README.th.md) · [English](README.md)
+
 # Dify DSL 技能包
 
 [English](README.md)

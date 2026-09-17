@@ -7,7 +7,7 @@
 - 只把本页模板当作“可直接起手”的骨架。
 - 需要更复杂链路时，在骨架上增量修改，不要反向删复杂模板。
 - 若需求落不到本页模板，先回到 `templates-library` 与 `template-validation-status` 判断是否只能用推导模板。
-- 本页骨架的节点组合来自当前参考体系中的样例索引与骨架归纳，但样例文件本身不一定随仓库一起分发；app DSL 的版本号已按当前导出标准归一化到 `0.6.0`。
+- 本页骨架的节点组合来自当前参考体系中的样例索引与骨架归纳，但样例文件本身不一定随仓库一起分发；app DSL 的版本号已按当前导出标准归一化到 `0.7.0`。
 
 ## 1. 已验证最小 Chatflow
 
@@ -19,7 +19,7 @@
 
 ```yaml
 kind: app
-version: 0.6.0
+version: '0.7.0'
 app:
   mode: advanced-chat
   name: your_chatflow
@@ -97,7 +97,7 @@ workflow:
 
 ```yaml
 kind: app
-version: 0.6.0
+version: '0.7.0'
 app:
   mode: workflow
   name: your_workflow
@@ -185,7 +185,7 @@ workflow:
 
 ```yaml
 kind: app
-version: 0.6.0
+version: '0.7.0'
 app:
   mode: workflow
   name: your_http_workflow
@@ -293,7 +293,7 @@ workflow:
 
 ```yaml
 kind: app
-version: 0.6.0
+version: '0.7.0'
 app:
   mode: workflow
   name: your_branch_workflow
@@ -413,7 +413,7 @@ start -> if-else(多组) -> template-transform/code -> variable-aggregator -> en
 
 ```yaml
 kind: app
-version: 0.6.0
+version: '0.7.0'
 app:
   mode: workflow
   name: your_iteration_workflow
@@ -510,7 +510,7 @@ workflow:
 
 ```yaml
 kind: app
-version: 0.6.0
+version: '0.7.0'
 app:
   mode: workflow
   name: your_loop_workflow
@@ -621,3 +621,5 @@ datasource -> if-else(file type) -> document-extractor/tool -> variable-aggregat
 
 - 只把本页骨架用于 `template-validation-status` 中标记为 `已由样例索引直接支撑` 的模板。
 - 对 `间接验证` 或 `推导` 模板，不要直接复制成本页骨架后宣称“已验证”。
+
+Thai edition: see [version policy](../../dify-dsl-foundations/references/dsl-version-policy.th.md) for source evidence and output scope.

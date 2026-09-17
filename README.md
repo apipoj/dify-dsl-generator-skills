@@ -1,6 +1,17 @@
 # Dify DSL Skill Pack
 
-[简体中文](README.zh-CN.md)
+[ภาษาไทย](README.th.md) · [简体中文](README.zh-CN.md)
+
+## Thai edition and Claude support
+
+This edition translates all 12 skill instructions into Thai and adds Claude Code project skills plus a self-contained Claude.ai upload. See the [Thai guide](README.th.md) and [Claude installation guide](.claude/INSTALL.th.md). New app output targets DSL `0.7.0`; RAG Pipeline retains its separate `0.1.0` format. Historical fixtures stay unchanged.
+
+```bash
+python3 scripts/install_claude_code.py
+python3 scripts/build_claude_ai_bundle.py
+```
+
+Based on [lazeyliu/dify-dsl-generator-skills](https://github.com/lazeyliu/dify-dsl-generator-skills), under the original MIT license.
 
 This repository is a skill pack for working with `Dify DSL`.
 

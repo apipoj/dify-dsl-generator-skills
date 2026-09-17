@@ -70,3 +70,7 @@
 - 有阻塞项时，至少给“明显不完整”
 
 完整报告格式需要时，使用 [../../dify-dsl-quality/references/report-template.md](../../dify-dsl-quality/references/report-template.md)。
+
+## Thai edition output version
+
+For newly generated DSL, follow [version policy](dsl-version-policy.th.md): app `0.7.0`, RAG pipeline `0.1.0`. Validate with `python3 scripts/validate_generated_dsl.py <output.yml>` from the repository/package root. Historical fixtures and replay outputs are not current generation templates.

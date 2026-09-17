@@ -25,7 +25,7 @@ app:
   use_icon_as_answer_icon: false
 dependencies: []
 kind: app
-version: 0.6.0
+version: '0.7.0'
 workflow:
   conversation_variables: []
   environment_variables: []
@@ -137,9 +137,11 @@ fixture 或编辑器里常见，但不应默认抬成硬约束的字段:
 - `retry_config` 常见 `enabled` 与 `retry_enabled` 两种写法。
 - `tool_parameters`、`datasource_parameters` 有时会出现简写字符串写法，也有对象写法。
 - 节点 `data` 允许 `extra=allow`，所以导出 DSL 常混入历史字段。
-- 本地很多 app fixture 仍使用历史 `0.3.1` 形态，而当前 app DSL 导出版本已是 `0.6.0`。
+- 本地 fixture 保留历史版本作为回归证据；新建 app DSL 使用 `0.7.0`，不要直接复制旧 header。
 
 结论:
 
 - 新生成 DSL 优先写稳定、清晰的字段结构。
 - 如果要模仿现有导出样例，必须在报告里标记为“兼容写法”。
+
+Thai edition: see [version policy](dsl-version-policy.th.md) for source evidence and output scope.

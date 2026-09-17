@@ -1,19 +1,23 @@
 ---
 name: dify-dsl-foundations
-description: Dify DSL 共享底座技能。用于模式判断、任务路由、selector 模板、稳定字段口径、输出契约和校验门槛；在 authoring、review、refactor 之前都应先用它收敛基础判断。
+description: พื้นฐานร่วมของ Dify DSL สำหรับเลือกโหมดและเส้นทางงาน กำหนด selector ฟิลด์ รูปแบบผลลัพธ์ และเกณฑ์ตรวจสอบ ใช้ก่อน authoring, review และ refactor
 ---
 
 # dify-dsl-foundations
 
-先解决“这是什么模式、该走哪条路线、字段和输出口径怎么统一”，再进入节点、模板、审查或交付判断。
+ระบุโหมด เส้นทางงาน และรูปแบบฟิลด์กับผลลัพธ์ให้ชัด ก่อนลงรายละเอียดโหนด เทมเพลต คุณภาพ หรือการส่งมอบ
 
-## 入口
+## เริ่มอ่าน
 
-先读 [references/index.md](references/index.md)，再按需补 `common-dsl / task-routing / orchestration-modes / selector-templates / output-contract / validation-contract`。
+อ่าน [ดัชนีอ้างอิง](references/index.md) แล้วเลือกเฉพาะ `common-dsl / task-routing / orchestration-modes / selector-templates / output-contract / validation-contract` ที่เกี่ยวข้อง
 
-## 路由边界
+## ขอบเขต
 
-- 节点字段与节点组合，转去 [../dify-dsl-nodes/SKILL.md](../dify-dsl-nodes/SKILL.md)
-- 模板选择与模板变体，转去 [../dify-dsl-templates/SKILL.md](../dify-dsl-templates/SKILL.md)
-- 审查、修复、优化策略，转去 [../dify-dsl-quality/SKILL.md](../dify-dsl-quality/SKILL.md)
-- 发布结论、覆盖率、变更影响，转去 [../dify-dsl-governance/SKILL.md](../dify-dsl-governance/SKILL.md)
+- ฟิลด์และการเชื่อมโหนด → [dify-dsl-nodes](../dify-dsl-nodes/SKILL.md)
+- การเลือกเทมเพลตและรูปแบบย่อย → [dify-dsl-templates](../dify-dsl-templates/SKILL.md)
+- กลยุทธ์ตรวจ แก้ไข และปรับปรุง → [dify-dsl-quality](../dify-dsl-quality/SKILL.md)
+- การเผยแพร่ ความครอบคลุม และผลกระทบ → [dify-dsl-governance](../dify-dsl-governance/SKILL.md)
+
+## เวอร์ชันผลลัพธ์ใหม่
+
+อ่าน [ข้อกำหนดเวอร์ชัน](references/dsl-version-policy.th.md) ก่อนสร้าง DSL ใช้ `version: '0.7.0'` สำหรับ `kind: app` และ `version: '0.1.0'` สำหรับ `kind: rag_pipeline` อย่าคัดลอก header เก่าจาก fixtures หรือ replay

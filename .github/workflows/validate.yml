@@ -30,6 +30,18 @@ jobs:
       - name: Validate Skill Structure
         run: python3 scripts/quick_validate.py
 
+      - name: Test Thai and Claude Distribution
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+
+      - name: Build Claude.ai Skill
+        run: python3 scripts/build_claude_ai_bundle.py
+
+      - name: Upload Claude.ai Skill
+        uses: actions/upload-artifact@v4
+        with:
+          name: dify-dsl-th
+          path: dist/dify-dsl-th.zip
+
   forward-testing:
     runs-on: ubuntu-latest
     needs: structure
