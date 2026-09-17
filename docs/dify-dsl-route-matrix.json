@@ -15,7 +15,9 @@
         }
       ],
       "next_zh": "`dify-dsl-authoring / review / refactor`",
-      "next_en": "`dify-dsl-authoring / review / refactor`"
+      "next_en": "`dify-dsl-authoring / review / refactor`",
+      "goal_th": "ความต้องการยังไม่ชัดเจน",
+      "next_th": "`dify-dsl-authoring / review / refactor`"
     },
     {
       "key": "create",
@@ -32,7 +34,9 @@
         }
       ],
       "next_zh": "高复杂度时进入 `dify-dsl-subagent-review`",
-      "next_en": "Use `dify-dsl-subagent-review` when complexity or risk is high"
+      "next_en": "Use `dify-dsl-subagent-review` when complexity or risk is high",
+      "goal_th": "สร้าง DSL ใหม่",
+      "next_th": "ใช้ `dify-dsl-subagent-review` เมื่อซับซ้อนหรือเสี่ยงสูง โดยตรวจเครื่องมือและสิทธิ์ก่อน"
     },
     {
       "key": "review",
@@ -49,7 +53,9 @@
         }
       ],
       "next_zh": "需要多方复核时进入 `dify-dsl-subagent-review`",
-      "next_en": "Escalate to `dify-dsl-subagent-review` for formal multi-review"
+      "next_en": "Escalate to `dify-dsl-subagent-review` for formal multi-review",
+      "goal_th": "ตรวจ DSL เดิมแบบอ่านอย่างเดียว",
+      "next_th": "ใช้ `dify-dsl-subagent-review` เมื่อต้องตรวจอิสระหลายฝ่าย"
     },
     {
       "key": "refactor",
@@ -66,7 +72,9 @@
         }
       ],
       "next_zh": "修改后需要独立复核时进入 `dify-dsl-subagent-review`",
-      "next_en": "Use `dify-dsl-subagent-review` after risky changes"
+      "next_en": "Use `dify-dsl-subagent-review` after risky changes",
+      "goal_th": "แก้ไข DSL เดิม",
+      "next_th": "ใช้ `dify-dsl-subagent-review` เมื่อต้องตรวจอิสระหลังแก้ไข"
     },
     {
       "key": "template",
@@ -83,7 +91,9 @@
         }
       ],
       "next_zh": "如需正文再进入 `dify-dsl-authoring`",
-      "next_en": "Move to `dify-dsl-authoring` if a full draft is needed"
+      "next_en": "Move to `dify-dsl-authoring` if a full draft is needed",
+      "goal_th": "เลือกเฉพาะเทมเพลต",
+      "next_th": "ไป `dify-dsl-authoring` เมื่อต้องสร้างร่าง DSL"
     },
     {
       "key": "governance",
@@ -100,7 +110,9 @@
         }
       ],
       "next_zh": "如果用户同时明确要求多方独立复核或冲突归并，再进入 `dify-dsl-subagent-review`",
-      "next_en": "Use `dify-dsl-subagent-review` first only when the user explicitly wants multi-review or conflict merge"
+      "next_en": "Use `dify-dsl-subagent-review` first only when the user explicitly wants multi-review or conflict merge",
+      "goal_th": "ประเมินความพร้อมส่งมอบ",
+      "next_th": "ใช้ `dify-dsl-subagent-review` ก่อน เมื่อผู้ใช้ขอการตรวจหลายฝ่ายหรือรวมผลที่ขัดแย้ง"
     },
     {
       "key": "subagent_review",
@@ -117,7 +129,9 @@
         }
       ],
       "next_zh": "按并行 / 串行 / 单子代理 / 无子代理退化",
-      "next_en": "Pick parallel / serial / single-subagent / no-subagent fallback"
+      "next_en": "Pick parallel / serial / single-subagent / no-subagent fallback",
+      "goal_th": "จัดการการตรวจหลายฝ่าย",
+      "next_th": "เลือกรูปแบบขนาน / ตามลำดับ / subagent เดียว / ไม่มี subagent ตามงาน เครื่องมือ และสิทธิ์"
     }
   ],
   "main_path_zh": [
@@ -129,5 +143,10 @@
     "using-dify-dsl",
     "-> brainstorming / authoring / review / refactor / templates / governance / subagent-review",
     "-> use subagent-review or governance again only when needed"
+  ],
+  "main_path_th": [
+    "using-dify-dsl",
+    "-> brainstorming / authoring / review / refactor / templates / governance / subagent-review",
+    "-> ตรวจต่อด้วย subagent-review หรือ governance เฉพาะเมื่อจำเป็น"
   ]
 }

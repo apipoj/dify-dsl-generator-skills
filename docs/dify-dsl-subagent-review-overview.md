@@ -1,5 +1,7 @@
 # Dify DSL Subagent Review Overview
 
+[ภาษาไทย](dify-dsl-subagent-review-overview.th.md) · [简体中文](dify-dsl-subagent-review-overview.zh-CN.md) · [Documentation index](README.md)
+
 This page answers four questions:
 
 1. When should `dify-dsl-subagent-review` be used?
@@ -147,7 +149,19 @@ In that case, the workflow must:
 
 The first three gather raw opinions. The last one only appears when gate merging or conflict arbitration is actually needed.
 
+## Platform setup and limits
+
+The files in `skills/dify-dsl-quality/agents/` are role instructions. This repository's installer exposes skills; it does not install these roles as named custom agents in `.claude/agents/`. In Claude Code, pass the role instructions and relevant file paths to an available subagent, or separately configure a custom agent with read-only tool access. See [Claude Code subagent documentation](https://code.claude.com/docs/en/sub-agents).
+
+In Claude.ai and Codex, inspect the actual tools and session permissions before delegating. Installing or uploading a skill does not establish independent-agent availability. If unavailable, use the no-subagent fallback and report that independent review was not performed. See the [Claude setup guide](../.claude/INSTALL.th.md) and [platform overview](README.md).
+
+New app output targets DSL `0.7.0`; RAG Pipeline retains `0.1.0`. Historical fixtures are regression evidence, not current output templates. Agent App and portable Agent v2 packages remain outside this pack's validated generation scope. See the [version policy and primary sources](../skills/dify-dsl-foundations/references/dsl-version-policy.th.md).
+
+Platform sources checked via Exa on 2026-09-17.
+
 ## Current Coverage
+
+These are stored cases and replay assertions. `validate_forward_testing.py` checks case structure, lint, and saved outputs; it does not launch fresh model sessions or independent reviewers. Live Claude Code, Claude.ai, and Dify import/runtime tests require separate evidence. A passing lint result alone does not establish Dify compatibility.
 
 ### Ideal paths
 
@@ -195,4 +209,4 @@ At this point, the subagent review layer is no longer just a design idea. It now
 - fallback rules
 - conflict merge paths
 - upstream integration points
-- forward-testing coverage
+- stored-case and replay regression coverage; live platform behavior remains a separate verification step

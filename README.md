@@ -6,6 +6,8 @@
 
 [English](README.en.md) · [简体中文](README.zh-CN.md)
 
+คู่มือเพิ่มเติม: [เอกสารภาษาไทย](docs/README.md) · [การตรวจด้วยผู้ตรวจอิสระ](docs/dify-dsl-subagent-review-overview.th.md)
+
 ## เริ่มใช้กับ Claude Code
 
 เปิด terminal ที่ราก repository ที่ clone มาแล้ว:

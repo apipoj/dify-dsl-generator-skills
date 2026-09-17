@@ -105,7 +105,7 @@ class BundleTests(unittest.TestCase):
             package = (temp / 'extracted' / NAME).resolve()
             self.assertEqual(len(list((package / 'skills').glob('*/SKILL.md'))), 12)
             self.assertEqual((package / 'LICENSE').read_bytes(), (ROOT / 'LICENSE').read_bytes())
-            for path in [package / 'SKILL.md', *(package / 'skills').rglob('*.md')]:
+            for path in [package / 'SKILL.md', *(package / 'skills').rglob('*.md'), *(package / 'docs').rglob('*.md')]:
                 for raw in re.findall(r'\[[^\]]+\]\(([^)]+)\)', path.read_text()):
                     target = raw.split('#', 1)[0]
                     if not target or re.match(r'^[a-z]+:', target):

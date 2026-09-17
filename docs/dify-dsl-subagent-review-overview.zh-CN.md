@@ -1,5 +1,7 @@
 # Dify DSL 子代理复核总览
 
+[ภาษาไทย](dify-dsl-subagent-review-overview.th.md) · [English](dify-dsl-subagent-review-overview.md) · [文档目录](README.md)
+
 这页只回答四个问题：
 
 1. 什么时候该用 `dify-dsl-subagent-review`
@@ -147,7 +149,19 @@ using-dify-dsl
 
 其中前三个负责拿原始意见，最后一个只在“需要仲裁 / 需要门禁归并”时启用。
 
+## 平台配置与边界
+
+`skills/dify-dsl-quality/agents/` 中的文件是角色说明。当前安装脚本只安装 skill，不会把这些角色安装为 `.claude/agents/` 下的具名自定义代理。在 Claude Code 中，应将角色说明和相关文件路径交给可用子代理，或另行配置只读自定义代理。参见 [Claude Code 子代理文档](https://code.claude.com/docs/en/sub-agents)。
+
+在 Claude.ai 和 Codex 中，必须检查当前会话实际提供的工具与权限。安装或上传 skill 不代表已有独立子代理能力；不可用时，应走无子代理路径并明确说明未做独立复核。参见 [Claude 安装指南](../.claude/INSTALL.th.md) 与 [平台说明](README.md)。
+
+新生成的 App DSL 使用 `0.7.0`，RAG Pipeline 使用独立的 `0.1.0`。历史 fixture 用于回归，不是最新输出模板。Agent App 与 portable Agent v2 packages 尚不在本技能包已验证的生成范围内。参见 [版本约定与原始来源](../skills/dify-dsl-foundations/references/dsl-version-policy.th.md)。
+
+平台来源于 2026-09-17 通过 Exa 核查。
+
 ## 当前样本覆盖
+
+以下是已保存的 case 与 replay 断言。`validate_forward_testing.py` 检查 case 结构、lint 和保存的输出，不会启动新的模型会话或独立复核器。Claude Code、Claude.ai 与 Dify 导入和运行的实测需要独立证据，不能仅凭 lint 通过声称兼容。
 
 ### 理想路径
 
@@ -195,4 +209,4 @@ using-dify-dsl
 - 有退化规则
 - 有冲突仲裁路径
 - 有上游 skill 接入点
-- 有前向验证样本覆盖
+- 有保存样本与 replay 回归覆盖；平台实际行为仍需另行验证

@@ -27,6 +27,8 @@ class FileSpec:
 
 
 FILE_SPECS = (
+    FileSpec("docs/README.md", "th", "linked", False),
+    FileSpec("docs/dify-dsl-subagent-review-overview.th.md", "th", "linked", True),
     FileSpec("README.zh-CN.md", "zh", "plain", True),
     FileSpec("README.en.md", "en", "plain", True),
     FileSpec("docs/dify-dsl-subagent-review-overview.zh-CN.md", "zh", "plain", True),
@@ -47,32 +49,25 @@ def join_entries(entries: list[dict], file_path: Path, locale: str, style: str) 
             continue
         relative = os.path.relpath(REPO_ROOT / entry["path"], file_path.parent)
         parts.append(f"[{entry['name']}]({Path(relative).as_posix()})")
-    separator = " 或 " if locale == "zh" else " or "
+    separator = {"zh": " 或 ", "en": " or ", "th": " หรือ "}[locale]
     return separator.join(parts)
 
 
 def render_route_matrix(source: dict, spec: FileSpec) -> str:
-    if spec.locale == "zh":
-        lines = [
-            "| 用户目标 | 推荐入口 | 常见下一步 |",
-            "| --- | --- | --- |",
-        ]
-        for row in source["rows"]:
-            entry = join_entries(row["entries"], REPO_ROOT / spec.path, "zh", spec.entry_style)
-            lines.append(f"| {row['goal_zh']} | {entry} | {row['next_zh']} |")
-    else:
-        lines = [
-            "| User goal | Recommended entry | Common next step |",
-            "| --- | --- | --- |",
-        ]
-        for row in source["rows"]:
-            entry = join_entries(row["entries"], REPO_ROOT / spec.path, "en", spec.entry_style)
-            lines.append(f"| {row['goal_en']} | {entry} | {row['next_en']} |")
+    headers = {
+        "zh": "| 用户目标 | 推荐入口 | 常见下一步 |",
+        "en": "| User goal | Recommended entry | Common next step |",
+        "th": "| เป้าหมาย | Skill เริ่มต้น | ขั้นตอนถัดไป |",
+    }
+    lines = [headers[spec.locale], "| --- | --- | --- |"]
+    for row in source["rows"]:
+        entry = join_entries(row["entries"], REPO_ROOT / spec.path, spec.locale, spec.entry_style)
+        lines.append(f"| {row[f'goal_{spec.locale}']} | {entry} | {row[f'next_{spec.locale}']} |")
     return "\n".join(lines)
 
 
 def render_main_path(source: dict, locale: str) -> str:
-    lines = source["main_path_zh"] if locale == "zh" else source["main_path_en"]
+    lines = source[f"main_path_{locale}"]
     return "```text\n" + "\n".join(lines) + "\n```"
 
 
