@@ -1,0 +1,20 @@
+{
+  "name": "apipoj-dify",
+  "interface": {
+    "displayName": "Dify DSL ภาษาไทย"
+  },
+  "plugins": [
+    {
+      "name": "dify-dsl-th",
+      "source": {
+        "source": "local",
+        "path": "./plugins/dify-dsl-th"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

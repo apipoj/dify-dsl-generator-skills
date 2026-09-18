@@ -1,0 +1,15 @@
+{
+  "name": "apipoj-dify",
+  "owner": {
+    "name": "apipoj"
+  },
+  "metadata": {
+    "description": "Thai Dify DSL skills for Claude Code and Codex."
+  },
+  "plugins": [
+    {
+      "name": "dify-dsl-th",
+      "source": "./plugins/dify-dsl-th"
+    }
+  ]
+}
