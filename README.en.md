@@ -2,22 +2,56 @@
 
 [ภาษาไทย](README.md) · [简体中文](README.zh-CN.md)
 
-## Native Codex and Claude Code plugins
+## Install via plugin (recommended)
 
-Run `python3 scripts/build_plugin_bundle.py`, then extract `dist/dify-dsl-plugins.zip` with `python3 -m zipfile -e dist/dify-dsl-plugins.zip dist`. The portable local marketplace contains one plugin, `dify-dsl-th`, with both native manifests and all 12 skills plus their dependencies.
+The `dify-dsl-th` plugin includes all 12 skills and their supporting files for both Claude Code and Codex. You need Git, Python 3.10+, and the CLI for your chosen platform. Running the DSL validation scripts also requires Ruby.
 
-For Codex: `codex plugin marketplace add ./dist/dify-dsl-plugins`, then `codex plugin add dify-dsl-th@personal`.
+### 1. Build the plugin marketplace
 
-For Claude Code: `claude plugin marketplace add ./dist/dify-dsl-plugins`, then `claude plugin install dify-dsl-th@personal`. Start a fresh session and invoke `/dify-dsl-th:using-dify-dsl`.
+```bash
+git clone https://github.com/apipoj/dify-dsl-generator-skills.git
+cd dify-dsl-generator-skills
+python3 scripts/build_plugin_bundle.py
+python3 -m zipfile -e dist/dify-dsl-plugins.zip dist
+```
 
-Keep the extracted marketplace in a permanent location. If a marketplace named `personal` already exists, rename the generated catalogs before registering and use that name in the install command. Choose either the plugin or the older symlink installation to avoid duplicate skills. Claude.ai continues to use its separate Skill ZIP. See the [full plugin guide](docs/plugins.th.md) for updates and validation. The GitHub repository is build source, not a directly installable marketplace.
+For an existing clone, run the build commands from its root. Keep `dist/dify-dsl-plugins` in place, or move it to a permanent location before registering and adjust the paths below. The GitHub repository is build source; register the extracted marketplace directory.
+
+If a marketplace named `personal` already exists, change `name` in both generated catalogs (`.agents/plugins/marketplace.json` and `.claude-plugin/marketplace.json` inside `dist/dify-dsl-plugins`) to a unique name before registering, and replace `@personal` below accordingly.
+
+### 2. Claude Code
+
+From the repository root after building:
+
+```bash
+claude plugin marketplace add ./dist/dify-dsl-plugins
+claude plugin install dify-dsl-th@personal
+```
+
+Start a fresh Claude Code session in your working project and invoke:
+
+```text
+/dify-dsl-th:using-dify-dsl Create a Dify workflow that summarizes Thai text into three points and saves the YAML.
+```
+
+### 3. Codex
+
+From the repository root, using a Codex version with `codex plugin` support:
+
+```bash
+codex plugin marketplace add ./dist/dify-dsl-plugins
+codex plugin add dify-dsl-th@personal
+```
+
+Open a new task and ask: “Use the dify-dsl-th plugin, starting with using-dify-dsl, to create a Dify workflow that summarizes Thai text into three points and saves the YAML.”
+
+Install for either or both platforms. Choose either the plugin or the older symlink installation to avoid duplicate skills; this checkout already includes `.claude/skills/` for development. See the [plugin guide](docs/plugins.th.md) for updates and validation, and the [Claude Code](.claude/INSTALL.th.md) and [Codex](.codex/INSTALL.th.md) guides for the development symlink option.
 
 ## Thai edition and Claude support
 
 This edition translates all 12 skill instructions into Thai and adds Claude Code project skills plus a self-contained Claude.ai upload. See the [Thai guide](README.md) and [Claude installation guide](.claude/INSTALL.th.md). New app output targets DSL `0.7.0`; RAG Pipeline retains its separate `0.1.0` format. Historical fixtures stay unchanged.
 
 ```bash
-python3 scripts/install_claude_code.py
 python3 scripts/build_claude_ai_bundle.py
 ```
 
@@ -137,14 +171,6 @@ If you already know the exact goal, you can still jump directly to an entry skil
 - modify an existing DSL: start with [dify-dsl-refactor](skills/dify-dsl-refactor/SKILL.md)
 - organize multi-review and merge conclusions: start with [dify-dsl-subagent-review](skills/dify-dsl-subagent-review/SKILL.md)
 - validate the skills themselves: start with [dify-dsl-forward-testing](skills/dify-dsl-forward-testing/SKILL.md)
-
-## Install For Codex
-
-The recommended setup is to install the whole repository as one bundle instead of symlinking each skill separately into `~/.codex/skills/`.
-
-See [.codex/INSTALL.md](.codex/INSTALL.md) for the manual steps and the migration script.
-
-Current Codex builds may still list multiple downstream `dify-dsl-*` skills in the picker even when installed as a bundle. Treat `using-dify-dsl` as the recommended entry, not as the only visible card.
 
 ## Repository Layout
 

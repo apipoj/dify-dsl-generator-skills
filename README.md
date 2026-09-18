@@ -8,36 +8,58 @@
 
 คู่มือเพิ่มเติม: [เอกสารภาษาไทย](docs/README.md) · [การตรวจด้วยผู้ตรวจอิสระ](docs/dify-dsl-subagent-review-overview.th.md)
 
-## ติดตั้งเป็น Codex / Claude Code plugin
+## ติดตั้งผ่าน plugin (แนะนำ)
 
-สร้างแพ็กเกจ native plugin ที่รวมทั้ง 12 skills และไฟล์ประกอบ:
+ใช้ plugin `dify-dsl-th` สำหรับ Claude Code และ Codex โดยแพ็กเกจเดียวรวมทั้ง 12 skills และไฟล์อ้างอิง ต้องมี Git, Python 3.10+ และ CLI ของแพลตฟอร์มที่ต้องการใช้ ส่วนการรันสคริปต์ตรวจ DSL ต้องมี Ruby ด้วย
+
+### 1. Clone และสร้างแพ็กเกจ
 
 ```bash
+git clone https://github.com/apipoj/dify-dsl-generator-skills.git
+cd dify-dsl-generator-skills
 python3 scripts/build_plugin_bundle.py
 python3 -m zipfile -e dist/dify-dsl-plugins.zip dist
 ```
 
-ติดตั้งกับ Codex หรือ Claude Code ตาม [คู่มือ plugin](docs/plugins.th.md) แพ็กเกจนี้ใช้ namespace `dify-dsl-th` ส่วน Claude.ai ใช้ ZIP สำหรับ Skill ตามหัวข้อด้านล่าง
+หาก clone ไว้แล้ว ให้เปิด terminal ที่ราก repository และเริ่มจากคำสั่ง build จะได้ marketplace ที่ `dist/dify-dsl-plugins` ให้เก็บโฟลเดอร์นี้ไว้ตลอดการใช้งาน หรือย้ายไปตำแหน่งถาวรก่อนติดตั้งแล้วปรับพาธในคำสั่งด้านล่าง
 
-## เริ่มใช้กับ Claude Code
+Marketplace ใช้ชื่อ `personal` หากมีชื่อนี้อยู่แล้ว ให้เปลี่ยนฟิลด์ `name` ใน `dist/dify-dsl-plugins/.agents/plugins/marketplace.json` และ `dist/dify-dsl-plugins/.claude-plugin/marketplace.json` เป็นชื่อที่ไม่ซ้ำ แล้วใช้ชื่อนั้นแทน `@personal`
 
-เปิด terminal ที่ราก repository ที่ clone มาแล้ว:
+### 2. ติดตั้งกับ Claude Code
+
+รันจากราก repository หลังสร้างแพ็กเกจ:
 
 ```bash
-python3 scripts/install_claude_code.py
-claude
+claude plugin marketplace add ./dist/dify-dsl-plugins
+claude plugin install dify-dsl-th@personal
 ```
 
-สคริปต์จะสร้าง symlink ของทั้ง 12 skill ใน `.claude/skills/` ของโปรเจกต์ รันซ้ำได้โดยไม่ทำลาย skill อื่น หาก clone นี้มี symlink ครบอยู่แล้ว ก็เริ่ม `claude` ได้เลย
-
-ลองพิมพ์ใน Claude Code:
+เปิด Claude Code session ใหม่ในโปรเจกต์ที่ต้องการทำงาน แล้วเรียก:
 
 ```text
-/using-dify-dsl สร้าง workflow รับข้อความภาษาไทยแล้วสรุปเป็น 3 ข้อ
+/dify-dsl-th:using-dify-dsl สร้าง workflow รับข้อความภาษาไทยแล้วสรุปเป็น 3 ข้อ
 ใช้โมเดลที่ฉันกำหนดและบันทึกเป็นไฟล์ YAML สำหรับนำเข้า Dify
 ```
 
-หากยังไม่ได้ระบุโมเดลหรือข้อมูลที่จำเป็น ผู้ช่วยจะถามเฉพาะสิ่งที่ต้องใช้ การเรียก skill โดยตรงใช้ `/ชื่อ-skill` ดูขั้นตอนติดตั้งทุกโปรเจกต์และการแก้ปัญหาที่ [คู่มือ Claude](.claude/INSTALL.th.md)
+### 3. ติดตั้งกับ Codex
+
+รันจากราก repository หลังสร้างแพ็กเกจ ต้องใช้ Codex รุ่นที่รองรับ `codex plugin`:
+
+```bash
+codex plugin marketplace add ./dist/dify-dsl-plugins
+codex plugin add dify-dsl-th@personal
+```
+
+เปิด task ใหม่ใน Codex แล้วพิมพ์:
+
+```text
+ใช้ plugin dify-dsl-th โดยเริ่มจาก using-dify-dsl
+ช่วยสร้าง Dify workflow สรุปข้อความภาษาไทยเป็น 3 ข้อและบันทึกเป็น YAML
+```
+
+เลือกติดตั้งเฉพาะแพลตฟอร์มที่ใช้ หรือทั้งสองแพลตฟอร์มก็ได้ ดูการอัปเดตและตรวจแพ็กเกจที่ [คู่มือ plugin](docs/plugins.th.md) คำสั่ง marketplace add ใช้โฟลเดอร์ที่แตกแพ็กเกจแล้ว; repository บน GitHub ยังเป็น source สำหรับ build
+
+หากเคยติดตั้งผ่าน symlink ให้เลือกใช้ plugin หรือ symlink เพียงช่องทางเดียวเพื่อไม่ให้ skill ซ้ำ วิธีเดิมสำหรับพัฒนาอยู่ที่ [คู่มือ Claude Code](.claude/INSTALL.th.md) และ [คู่มือ Codex](.codex/INSTALL.th.md) ภายใน clone นี้มี `.claude/skills/` สำหรับพัฒนาอยู่แล้ว
 
 ## เริ่มใช้กับ Claude.ai
 
@@ -57,14 +79,6 @@ python3 scripts/build_claude_ai_bundle.py
 ไม่ต้องอัปโหลดแต่ละ skill แยก เพราะมีการอ้างอิงข้ามโฟลเดอร์อยู่ในชุดเดียว หากใช้ Team หรือ Enterprise การเปิดใช้ขึ้นกับการตั้งค่าองค์กร ดู [วิธีใช้ Skills ของ Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude)
 
 ใน Claude.ai ผู้ช่วยต้องตรวจเครื่องมือที่มีจริงก่อนเรียกสคริปต์หรือ subagent ถ้ารันไม่ได้ จะระบุส่วนที่ยังไม่ผ่านการตรวจ ห้ามถือว่าการอัปโหลด skill แปลว่าเชื่อมต่อ Dify แล้ว
-
-## ใช้กับ Codex
-
-```bash
-bash scripts/install_codex_bundle.sh
-```
-
-เรียก `$using-dify-dsl` ตามด้วยโจทย์ ดู [คู่มือติดตั้ง Codex ภาษาไทย](.codex/INSTALL.th.md)
 
 ## ตัวอย่างทีม Agent ภาษาไทย
 
@@ -117,6 +131,6 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 
 ## การพัฒนาต่อ
 
-แก้ต้นฉบับที่ `skills/` แล้วสร้าง ZIP ใหม่ทุกครั้งที่เปลี่ยนเนื้อหา Claude Code ในโปรเจกต์ใช้ symlink จึงอ่านต้นฉบับเดียวกัน ส่วน Claude.ai ต้องอัปโหลด ZIP ที่สร้างใหม่เพื่ออัปเดต
+แก้ต้นฉบับที่ `skills/` แล้ว build plugin ใหม่และอัปเดตการติดตั้งตาม [คู่มือ plugin](docs/plugins.th.md) เมื่อเปลี่ยนเนื้อหา การติดตั้งผ่าน symlink สำหรับพัฒนาจะอ่านต้นฉบับโดยตรง ส่วน Claude.ai ต้องอัปโหลด Skill ZIP ที่สร้างใหม่เพื่ออัปเดต
 
 repository นี้เป็นชุดทักษะ ไม่ใช่ Dify server และไม่ได้จัดเก็บ credentials ของ Dify การเผยแพร่เป็น fork หรือ repository ใหม่ทำแยกจากการตั้งค่าในเครื่อง
