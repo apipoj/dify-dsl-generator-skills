@@ -34,7 +34,7 @@ DSL ใหม่ชนิด `app` ใช้ `version: '0.7.0'` ส่วน `ra
 
 def package_files() -> dict[str, bytes]:
     files = {'SKILL.md': ENTRY.encode('utf-8')}
-    for folder in ('skills', 'scripts', 'tests', 'docs', 'examples'):
+    for folder in ('skills', 'scripts', 'tests', 'docs', 'examples', 'packaging'):
         for path in sorted((ROOT / folder).rglob('*')):
             if not path.is_file() or '__pycache__' in path.parts or path.suffix == '.pyc' or path.name == '.DS_Store':
                 continue

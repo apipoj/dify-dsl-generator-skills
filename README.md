@@ -8,6 +8,17 @@
 
 คู่มือเพิ่มเติม: [เอกสารภาษาไทย](docs/README.md) · [การตรวจด้วยผู้ตรวจอิสระ](docs/dify-dsl-subagent-review-overview.th.md)
 
+## ติดตั้งเป็น Codex / Claude Code plugin
+
+สร้างแพ็กเกจ native plugin ที่รวมทั้ง 12 skills และไฟล์ประกอบ:
+
+```bash
+python3 scripts/build_plugin_bundle.py
+python3 -m zipfile -e dist/dify-dsl-plugins.zip dist
+```
+
+ติดตั้งกับ Codex หรือ Claude Code ตาม [คู่มือ plugin](docs/plugins.th.md) แพ็กเกจนี้ใช้ namespace `dify-dsl-th` ส่วน Claude.ai ใช้ ZIP สำหรับ Skill ตามหัวข้อด้านล่าง
+
 ## เริ่มใช้กับ Claude Code
 
 เปิด terminal ที่ราก repository ที่ clone มาแล้ว:

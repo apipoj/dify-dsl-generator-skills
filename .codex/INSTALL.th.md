@@ -1,5 +1,8 @@
 # ติดตั้งสำหรับ Codex
 
+ติดตั้งแบบ native plugin: [Codex และ Claude Code plugins](../docs/plugins.th.md)
+
+
 จากราก repository รัน:
 
 ```bash

@@ -1,5 +1,8 @@
 # ติดตั้งสำหรับ Claude Code และ Claude.ai
 
+ติดตั้งแบบ native plugin: [Codex และ Claude Code plugins](../docs/plugins.th.md)
+
+
 ตรวจสอบแนวทางจากเอกสาร Anthropic วันที่ 17 กันยายน 2026
 
 ## Claude Code: ใช้ในโปรเจกต์นี้

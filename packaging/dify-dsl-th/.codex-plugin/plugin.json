@@ -1,0 +1,30 @@
+{
+  "name": "dify-dsl-th",
+  "version": "0.1.0",
+  "description": "Thai skills for authoring, reviewing and validating Dify DSL.",
+  "author": {
+    "name": "apipoj",
+    "url": "https://github.com/apipoj"
+  },
+  "homepage": "https://github.com/apipoj/dify-dsl-generator-skills",
+  "repository": "https://github.com/apipoj/dify-dsl-generator-skills",
+  "license": "MIT",
+  "keywords": [
+    "dify",
+    "dsl",
+    "thai",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Dify DSL ภาษาไทย",
+    "shortDescription": "สร้างและตรวจ Dify DSL ด้วย 12 skills ภาษาไทย",
+    "longDescription": "ออกแบบ สร้าง ตรวจ และปรับปรุง Dify Workflow, Chatflow และ RAG Pipeline พร้อมเอกสารอ้างอิง ตัวอย่าง และสคริปต์ตรวจ DSL",
+    "developerName": "apipoj",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "ช่วยสร้าง Dify Workflow DSL ภาษาไทย โดยเริ่มจาก using-dify-dsl"
+    ]
+  }
+}

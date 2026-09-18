@@ -33,6 +33,15 @@ jobs:
       - name: Test Thai and Claude Distribution
         run: python3 -m unittest discover -s tests -p 'test_*.py'
 
+      - name: Build Native Plugins
+        run: python3 scripts/build_plugin_bundle.py
+
+      - name: Upload Native Plugins
+        uses: actions/upload-artifact@v4
+        with:
+          name: dify-dsl-plugins
+          path: dist/dify-dsl-plugins.zip
+
       - name: Build Claude.ai Skill
         run: python3 scripts/build_claude_ai_bundle.py
 
